@@ -174,7 +174,7 @@ export default function StudentDashboard() {
           {/* 3. Botón de reclamar (Aparece a los 3.5s, posicionado abajo del centro) */}
           {showClaimButton && (
             <a 
-              href="https://wa.me/5215546697272?text=COMPLETE%20MI%20PROCESO%20estoy%20listo%20para%20reclamar%20mi%20premio" 
+              href="https://wa.me/5215546979272?text=COMPLETE%20MI%20PROCESO%20estoy%20listo%20para%20reclamar%20mi%20premio" 
               target="_blank" 
               rel="noreferrer"
               onClick={playClickSound}
@@ -296,7 +296,7 @@ export default function StudentDashboard() {
 
       {/* BURBUJA FLOTANTE WHATSAPP */}
       <a 
-        href="https://wa.me/5215546697272" 
+        href="https://wa.me/5215546979272" 
         target="_blank" 
         rel="noreferrer"
         onClick={playClickSound}

@@ -1,14 +1,18 @@
 import { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom'; // <-- Importación añadida
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
-import { LogIn, Mail, Lock, AlertCircle } from 'lucide-react';
+import { LogIn, Mail, Lock, AlertCircle, FileText, X, CheckCircle } from 'lucide-react';
 
 export default function Login() {
-  const navigate = useNavigate(); // <-- Hook añadido
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  
+  // Estados para Términos y Condiciones
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   // Estado para los colores del cubo de Rubik interactivo
   const [cubeColors, setCubeColors] = useState([
@@ -19,9 +23,7 @@ export default function Login() {
 
   const audioCtxRef = useRef(null);
   const getAudioCtx = () => {
-    if (!audioCtxRef.current) {
-      audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
-    }
+    if (!audioCtxRef.current) audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
     return audioCtxRef.current;
   };
 
@@ -49,7 +51,6 @@ export default function Login() {
     osc.stop(ctx.currentTime + 0.15); osc2.stop(ctx.currentTime + 0.15);
   };
 
-  // Lógica para mezclar el cubo
   const shuffleCube = () => {
     playCreamyClick();
     const palette = ['#B71234', '#FFD500', '#0046AD', '#009B48', '#FF5800', '#ffffff'];
@@ -63,8 +64,16 @@ export default function Login() {
     }
   };
 
-const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    
+    // Validación de términos
+    if (!acceptedTerms) {
+      setError('Debes leer y aceptar los Términos y Condiciones para ingresar.');
+      playCreamyClick();
+      return;
+    }
+
     setLoading(true);
     setError('');
     playCreamyClick();
@@ -75,7 +84,6 @@ const handleLogin = async (e) => {
       setError('Correo o contraseña incorrectos.');
       setLoading(false);
     } else {
-      // ESTO ES LO QUE FALTABA: Redirigir al dashboard
       navigate('/'); 
     }
   };
@@ -97,10 +105,70 @@ const handleLogin = async (e) => {
         <svg className="vector-shape" style={{ bottom: '15%', right: '5%', animationDelay: '2s', opacity: 0.15 }} width="130" height="130" viewBox="0 0 100 100">
           <polygon points="50,5 95,27 95,73 50,95 5,73 5,27" fill="#009B48" />
         </svg>
-        <svg className="vector-shape animate-twinkle" style={{ top: '45%', left: '50%', animationDelay: '7s', opacity: 0.1 }} width="90" height="90" viewBox="0 0 100 100">
-          <rect width="100" height="100" rx="10" fill="#FF5800" transform="rotate(45 50 50)" />
-        </svg>
       </div>
+
+      {/* MODAL TÉRMINOS Y CONDICIONES */}
+      {showTerms && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }} onClick={() => setShowTerms(false)}>
+          <div 
+            className="relative w-full max-w-2xl p-8 rounded-2xl flex flex-col max-h-[90vh] overflow-y-auto"
+            style={{ background: 'rgba(30, 34, 42, 0.95)', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 8px 32px rgba(0,0,0,0.3)' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button onClick={() => setShowTerms(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white transition">
+              <X size={24} />
+            </button>
+            
+            <div className="flex items-center gap-3 mb-6">
+              <FileText size={28} className="text-blue-400" />
+              <h2 className="text-2xl font-bold text-white">Términos, Condiciones y Privacidad</h2>
+            </div>
+
+            <div className="text-gray-300 space-y-6 text-sm leading-relaxed">
+              <div>
+                <h3 className="text-white font-bold text-base mb-2">1. Nuestra Alianza (Honestidad Radical)</h3>
+                <p>Este bono no es un descuento directo de la Universidad Euroamericana (UEA). Es una alianza de éxito entre tú y tu Embajador Educativo. En un acto de transparencia total, tu Embajador recibe una comisión por tu inscripción y decide reinvertir el 50% de ese ingreso para crear este fondo exclusivo para tu éxito académico.</p>
+              </div>
+
+              <div>
+                <h3 className="text-white font-bold text-base mb-2">2. El Bono de Titulación</h3>
+                <p>Crearemos un fondo de reserva a tu nombre de <strong>$7,200 MXN</strong>. El objetivo es claro: eliminar la última barrera económica para que obtengas tu grado profesional. Verás cómo crece en tu panel visual conforme avances cuatrimestre a cuatrimestre.</p>
+              </div>
+
+              <div>
+                <h3 className="text-white font-bold text-base mb-2">3. ¿Cómo puedes usar tu bono?</h3>
+                <p>El dinero tiene un destino específico:</p>
+                <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+                  <li><strong>Para Titularte:</strong> Pago de derechos, trámites de título, cédula y examen.</li>
+                  <li><strong>Para Colegiaturas (Apoyo Extra):</strong> Si tienes una urgencia, puedes pedir usar parte del bono para pagar tus mensualidades. <em>Recuerda: Lo que uses para colegiatura se restará del total de $7,200. Al final, recibirás el saldo restante para tu titulación.</em></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-white font-bold text-base mb-2">4. Congelamiento y Bajas</h3>
+                <p>Si la vida te pone obstáculos (problemas económicos o personales), puedes "congelar" tu bono si tramitas oficialmente una Baja Temporal en la UEA. Mantendremos tu fondo seguro por <strong>12 meses</strong>. Si pasado ese tiempo no te reincorporas, el bono se cancelará para evitar pasivos financieros.</p>
+              </div>
+
+              <div>
+                <h3 className="text-white font-bold text-base mb-2">5. Pérdida del Bono</h3>
+                <p>La alianza se rompe y el bono se pierde si: ingresas con documentos falsos (esto es un delito federal) o si abandonas tus estudios sin avisar oficialmente a la administración.</p>
+              </div>
+
+              <div>
+                <h3 className="text-white font-bold text-base mb-2">6. Aviso de Privacidad</h3>
+                <p>Tu privacidad es sagrada. Solo guardamos tu <strong>nombre, correo electrónico, estado de tus pagos y el monto de tu bono</strong>. Usamos esta información única y exclusivamente para administrar tu cuenta y rastrear tu progreso. Tus contraseñas están encriptadas y jamás compartiremos tus datos con terceros.</p>
+              </div>
+            </div>
+
+            <button 
+              onClick={() => { playCreamyClick(); setShowTerms(false); setAcceptedTerms(true); }} 
+              className="mt-8 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 rounded-xl hover:scale-[1.02] transition-transform"
+            >
+              <CheckCircle size={20} /> He leído y Acepto
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Tarjeta de Cristal (Liquid Glass) */}
       <div 
@@ -114,12 +182,7 @@ const handleLogin = async (e) => {
         }}
       >
         {/* CUBO DE RUBIK INTERACTIVO */}
-        <button 
-          onClick={shuffleCube} 
-          className="mb-6 p-3 rounded-2xl cursor-pointer transition-transform hover:scale-105"
-          style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.1)' }}
-          title="¡Haz clic para mezclar!"
-        >
+        <button onClick={shuffleCube} className="mb-6 p-3 rounded-2xl cursor-pointer transition-transform hover:scale-105" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.1)' }} title="¡Haz clic para mezclar!">
           <svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="7" height="7" rx="2" fill={cubeColors[0]} style={{ transition: 'fill 0.4s ease' }} />
             <rect x="9" y="1" width="7" height="7" rx="2" fill={cubeColors[1]} style={{ transition: 'fill 0.4s ease' }} />
@@ -133,13 +196,8 @@ const handleLogin = async (e) => {
           </svg>
         </button>
 
-        {/* Puedes cambiar "TitulaCube" por el nombre que elijas */}
-        <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-2 text-center">
-          TitulaCube
-        </h2>
-        <p className="text-gray-400 text-sm mb-8 text-center">
-          Ingresa a tu plataforma de gestión
-        </p>
+        <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-2 text-center">TitulaCube</h2>
+        <p className="text-gray-400 text-sm mb-8 text-center">Ingresa a tu plataforma de gestión</p>
 
         {error && (
           <div className="w-full mb-4 flex items-center gap-2 bg-red-500/20 border border-red-500/30 text-red-300 text-sm px-4 py-3 rounded-xl">
@@ -151,33 +209,29 @@ const handleLogin = async (e) => {
         <form onSubmit={handleLogin} className="w-full space-y-5">
           <div className="relative">
             <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
-            <input 
-              type="email" 
-              placeholder="Correo Electrónico" 
-              className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)} 
-              required 
-            />
+            <input type="email" placeholder="Correo Electrónico" className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition" value={email} onChange={(e) => setEmail(e.target.value)} required />
           </div>
           
           <div className="relative">
             <Lock size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
-            <input 
-              type="password" 
-              placeholder="Contraseña" 
-              className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
-            />
+            <input type="password" placeholder="Contraseña" className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
 
-          <button 
-            type="submit" 
-            disabled={loading}
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 rounded-xl hover:scale-[1.02] transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
-          >
+          {/* CHECKBOX TÉRMINOS Y CONDICIONES */}
+          <div className="flex items-start gap-3 text-sm text-gray-400">
+            <input 
+              type="checkbox" 
+              id="terms" 
+              checked={acceptedTerms} 
+              onChange={() => { playCreamyClick(); setAcceptedTerms(!acceptedTerms); }} 
+              className="mt-1 w-5 h-5 rounded cursor-pointer accent-blue-500"
+            />
+            <label htmlFor="terms">
+              He leído y acepto los <button type="button" onClick={() => { playCreamyClick(); setShowTerms(true); }} className="text-blue-400 hover:underline font-semibold">Términos, Condiciones y Aviso de Privacidad</button>.
+            </label>
+          </div>
+
+          <button type="submit" disabled={loading || !acceptedTerms} className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 rounded-xl hover:scale-[1.02] transition-transform disabled:opacity-50 disabled:cursor-not-allowed">
             {loading ? (
               <span className="flex items-center gap-2">
                 <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

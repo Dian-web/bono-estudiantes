@@ -127,36 +127,36 @@ export default function Login() {
             <div className="text-gray-300 space-y-6 text-sm leading-relaxed">
               <div>
                 <h3 className="text-white font-bold text-base mb-2">1. Nuestra Alianza (Honestidad Radical)</h3>
-                <p>Este bono no es un descuento directo de la Universidad Euroamericana (UEA). Es una alianza de éxito entre tú y tu Embajador Educativo. En un acto de transparencia total, tu Embajador recibe una comisión por tu inscripción y decide reinvertir el 50% de ese ingreso para crear este fondo exclusivo para tu éxito académico.</p>
+                <p>Este bono no es un descuento directo de la Universidad Euroamericana (UEA). Es una alianza de éxito entre tú y tu Embajador Educativo. En un acto de transparencia total, tu Embajador recibe una comisión por tu inscripción y decide reinvertir el 50% de ese ingreso (equivalente a $200 MXN mensuales) para crear este fondo exclusivo para tu éxito académico.</p>
               </div>
 
               <div>
-                <h3 className="text-white font-bold text-base mb-2">2. El Bono de Titulación</h3>
-                <p>Crearemos un fondo de reserva a tu nombre de <strong>$7,200 MXN</strong>. El objetivo es claro: eliminar la última barrera económica para que obtengas tu grado profesional. Verás cómo crece en tu panel visual conforme avances cuatrimestre a cuatrimestre.</p>
+                <h3 className="text-white font-bold text-base mb-2">2. El Bono de Titulación (Acumulación Mensual)</h3>
+                <p>Tu bono no aparece desde el primer día, <strong>se construye con tu constancia</strong>. Cada mes que pagas tu colegiatura puntualmente, acumulas <strong>$200 MXN</strong> en tu fondo. Si mantienes este ritmo de pago durante tus 3 años de carrera (36 meses en total), alcanzarás el tope máximo de <strong>$7,200 MXN</strong>. Verás cómo tu cubo de Rubik se va armando y tu saldo crece en tu panel visual conforme avanzas mes a mes.</p>
               </div>
 
               <div>
                 <h3 className="text-white font-bold text-base mb-2">3. ¿Cómo puedes usar tu bono?</h3>
-                <p>El dinero tiene un destino específico:</p>
+                <p>El dinero acumulado tiene un destino específico:</p>
                 <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
-                  <li><strong>Para Titularte:</strong> Pago de derechos, trámites de título, cédula y examen.</li>
-                  <li><strong>Para Colegiaturas (Apoyo Extra):</strong> Si tienes una urgencia, puedes pedir usar parte del bono para pagar tus mensualidades. <em>Recuerda: Lo que uses para colegiatura se restará del total de $7,200. Al final, recibirás el saldo restante para tu titulación.</em></li>
+                  <li><strong>Para Titularte:</strong> Pago de derechos, trámites de título, cédula y examen al finalizar.</li>
+                  <li><strong>Para Colegiaturas (Apoyo Extra):</strong> Si tienes una urgencia, puedes pedir usar parte de tu bono acumulado para pagar tus mensualidades. <em>Recuerda: Lo que uses para colegiatura se restará de tu saldo total. Al final, recibirás el saldo restante para tu titulación.</em></li>
                 </ul>
               </div>
 
               <div>
                 <h3 className="text-white font-bold text-base mb-2">4. Congelamiento y Bajas</h3>
-                <p>Si la vida te pone obstáculos (problemas económicos o personales), puedes "congelar" tu bono si tramitas oficialmente una Baja Temporal en la UEA. Mantendremos tu fondo seguro por <strong>12 meses</strong>. Si pasado ese tiempo no te reincorporas, el bono se cancelará para evitar pasivos financieros.</p>
+                <p>Si la vida te pone obstáculos (problemas económicos o personales), puedes "congelar" tu bono acumulado hasta ese momento si tramitas oficialmente una Baja Temporal en la UEA. Mantendremos tu fondo seguro por <strong>12 meses</strong>. Si pasado ese tiempo no te reincorporas, el bono se cancelará para evitar pasivos financieros.</p>
               </div>
 
               <div>
                 <h3 className="text-white font-bold text-base mb-2">5. Pérdida del Bono</h3>
-                <p>La alianza se rompe y el bono se pierde si: ingresas con documentos falsos (esto es un delito federal) o si abandonas tus estudios sin avisar oficialmente a la administración.</p>
+                <p>La alianza se rompe y el bono acumulado se pierde si: ingresas con documentos falsos (esto es un delito federal) o si abandonas tus estudios sin avisar oficialmente a la administración.</p>
               </div>
 
               <div>
                 <h3 className="text-white font-bold text-base mb-2">6. Aviso de Privacidad</h3>
-                <p>Tu privacidad es sagrada. Solo guardamos tu <strong>nombre, correo electrónico, estado de tus pagos y el monto de tu bono</strong>. Usamos esta información única y exclusivamente para administrar tu cuenta y rastrear tu progreso. Tus contraseñas están encriptadas y jamás compartiremos tus datos con terceros.</p>
+                <p>Tu privacidad es sagrada. Solo guardamos tu <strong>nombre, correo electrónico, estado de tus pagos y el monto acumulado de tu bono</strong>. Usamos esta información única y exclusivamente para administrar tu cuenta y rastrear tu progreso. Tus contraseñas están encriptadas y jamás compartiremos tus datos con terceros.</p>
               </div>
             </div>
 

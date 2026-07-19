@@ -131,27 +131,29 @@ export default function Login() {
               </div>
 
               <div>
-                <h3 className="text-white font-bold text-base mb-2">2. El Bono de Titulación (Acumulación Mensual)</h3>
-                <p>Tu bono no aparece desde el primer día, <strong>se construye con tu constancia</strong>. Cada mes que pagas tu colegiatura puntualmente, acumulas <strong>$200 MXN</strong> en tu fondo. Si mantienes este ritmo de pago durante tus 3 años de carrera (36 meses en total), alcanzarás el tope máximo de <strong>$7,200 MXN</strong>. Verás cómo tu cubo de Rubik se va armando y tu saldo crece en tu panel visual conforme avanzas mes a mes.</p>
+                <h3 className="text-white font-bold text-base mb-2">2. El Fondo de Apoyo para Titulación</h3>
+                <p>Tu bono no aparece desde el primer día, <strong>se construye con tu constancia</strong>. Cada mes que pagas tu colegiatura puntualmente, acumulas <strong>$200 MXN</strong>. Si mantienes este ritmo durante tus 3 años de carrera (36 meses), alcanzarás el tope máximo de <strong>$7,200 MXN</strong>.</p>
+                <p className="mt-2 text-yellow-300 font-semibold">Importante: Este dinero no se te entregará en efectivo ni cubre el proceso completo.</p>
+                <p className="mt-1">Sabemos que los trámites de titulación representan un gasto fuerte (suelen superar los $15,000 MXN). Por eso, este fondo funciona como un <strong>apoyo económico directo</strong> destinado a cubrir <strong>una parte importante</strong> de tus trámites de título y cédula. Verás cómo tu cristal se va ensamblando y tu saldo crece en tu panel conforme avanzas.</p>
               </div>
 
               <div>
-                <h3 className="text-white font-bold text-base mb-2">3. ¿Cómo puedes usar tu bono?</h3>
-                <p>El dinero acumulado tiene un destino específico:</p>
+                <h3 className="text-white font-bold text-base mb-2">3. ¿Cómo se usa este fondo?</h3>
+                <p>El dinero acumulado es un respaldo para apoyarte en dos cosas muy específicas:</p>
                 <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
-                  <li><strong>Para Titularte:</strong> Pago de derechos, trámites de título, cédula y examen al finalizar.</li>
-                  <li><strong>Para Colegiaturas (Apoyo Extra):</strong> Si tienes una urgencia, puedes pedir usar parte de tu bono acumulado para pagar tus mensualidades. <em>Recuerda: Lo que uses para colegiatura se restará de tu saldo total. Al final, recibirás el saldo restante para tu titulación.</em></li>
+                  <li><strong>Para Titularte (Uso Principal):</strong> Al finalizar, este fondo se aplica directamente como un apoyo para pagar parte de tus derechos, trámites y examen profesional.</li>
+                  <li><strong>Para Colegiaturas (Apoyo Extra):</strong> Si tienes una urgencia, puedes solicitar usar parte de tu fondo para pagar tus mensualidades. <em>Recuerda: Lo que uses para colegiatura se descontará de tu saldo total, por lo que el apoyo para tu titulación será menor.</em></li>
                 </ul>
               </div>
 
               <div>
                 <h3 className="text-white font-bold text-base mb-2">4. Congelamiento y Bajas</h3>
-                <p>Si la vida te pone obstáculos (problemas económicos o personales), puedes "congelar" tu bono acumulado hasta ese momento si tramitas oficialmente una Baja Temporal en la UEA. Mantendremos tu fondo seguro por <strong>12 meses</strong>. Si pasado ese tiempo no te reincorporas, el bono se cancelará para evitar pasivos financieros.</p>
+                <p>Si la vida te pone obstáculos, puedes "congelar" tu fondo acumulado hasta ese momento si tramitas oficialmente una Baja Temporal en la UEA. Mantendremos tu fondo seguro por <strong>12 meses</strong>. Si pasado ese tiempo no te reincorporas, el fondo se cancela para evitar pasivos financieros.</p>
               </div>
 
               <div>
-                <h3 className="text-white font-bold text-base mb-2">5. Pérdida del Bono</h3>
-                <p>La alianza se rompe y el bono acumulado se pierde si: ingresas con documentos falsos (esto es un delito federal) o si abandonas tus estudios sin avisar oficialmente a la administración.</p>
+                <h3 className="text-white font-bold text-base mb-2">5. Pérdida del Fondo</h3>
+                <p>La alianza se rompe y el fondo acumulado se pierde si: ingresas con documentos falsos (delito federal) o si abandonas tus estudios sin avisar oficialmente a la administración.</p>
               </div>
 
               <div>

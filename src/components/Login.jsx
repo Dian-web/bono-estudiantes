@@ -134,7 +134,7 @@ export default function Login() {
                 <h3 className="text-white font-bold text-base mb-2">2. El Fondo de Apoyo para Titulación</h3>
                 <p>Tu bono no aparece desde el primer día, <strong>se construye con tu constancia</strong>. Cada mes que pagas tu colegiatura puntualmente, acumulas <strong>$200 MXN</strong>. Si mantienes este ritmo durante tus 3 años de carrera (36 meses), alcanzarás el tope máximo de <strong>$7,200 MXN</strong>.</p>
                 <p className="mt-2 text-yellow-300 font-semibold">Importante: Este dinero no se te entregará en efectivo ni cubre el proceso completo.</p>
-                <p className="mt-1">Sabemos que los trámites de titulación representan un gasto fuerte (suelen superar los $15,000 MXN). Por eso, este fondo funciona como un <strong>apoyo económico directo</strong> destinado a cubrir <strong>una parte importante</strong> de tus trámites de título y cédula. Verás cómo tu cristal se va ensamblando y tu saldo crece en tu panel conforme avanzas.</p>
+                <p className="mt-1">Sabemos que los trámites de titulación representan un gasto fuerte. Por eso, este fondo funciona como un <strong>apoyo económico directo</strong> destinado a cubrir <strong>una parte importante</strong> de tus trámites de título y cédula. Verás cómo tu cristal se va ensamblando y tu saldo crece en tu panel conforme avanzas.</p>
               </div>
 
               <div>
